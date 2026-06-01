@@ -1,87 +1,75 @@
-const playBtn = document.getElementById("playBtn");
 const music = document.getElementById("music");
+const btn = document.getElementById("playBtn");
 
-playBtn.addEventListener("click", () => {
-    music.play();
+let playing = false;
 
-    document.querySelector(".counter")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+btn.addEventListener("click", () => {
+
+if(!playing){
+
+music.play();
+btn.innerHTML = "⏸ Pausar";
+
+}else{
+
+music.pause();
+btn.innerHTML = "▶ Reproduzir";
+
+}
+
+playing = !playing;
+
 });
 
-const startDate = new Date("2026-05-05");
+const startDate = new Date("2025-05-05");
 
-const today = new Date();
+function updateCounter(){
 
-const diff =
+const now = new Date();
+
+const diff = now - startDate;
+
+const days =
 Math.floor(
-(today - startDate) /
-(1000 * 60 * 60 * 24)
+diff / (1000*60*60*24)
 );
 
 document.getElementById("daysCounter")
-.innerText = diff + " dias";
+.innerHTML = `${days} dias`;
 
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modalImg");
+}
 
-document.querySelectorAll(".card img")
-.forEach(img => {
+updateCounter();
 
-img.addEventListener("click", () => {
+const observer =
+new IntersectionObserver(entries=>{
 
-modal.style.display = "flex";
-modalImg.src = img.src;
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate(
+[
+{
+opacity:0,
+transform:"translateY(50px)"
+},
+{
+opacity:1,
+transform:"translateY(0)"
+}
+],
+{
+duration:1000,
+fill:"forwards"
+}
+);
+
+}
 
 });
 
 });
 
-modal.addEventListener("click", () => {
-modal.style.display = "none";
-});
-
-function createHeart(){
-
-const heart =
-document.createElement("div");
-
-heart.innerHTML = "❤️";
-
-heart.style.position = "absolute";
-heart.style.left =
-Math.random()*100+"vw";
-
-heart.style.top = "-20px";
-
-heart.style.fontSize =
-(Math.random()*20+10)+"px";
-
-heart.style.animation =
-`fall ${Math.random()*5+5}s linear`;
-
-document
-.getElementById("hearts")
-.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},10000);
-
-}
-
-setInterval(createHeart,500);
-
-const style =
-document.createElement("style");
-
-style.innerHTML = `
-@keyframes fall{
-to{
-transform:translateY(110vh);
-}
-}
-`;
-
-document.head.appendChild(style);
+document.querySelectorAll(".memory")
+.forEach(item=>observer.observe(item));
