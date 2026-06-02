@@ -160,3 +160,69 @@ text-align:center;
 font-size:2rem;
 margin-bottom:20px;
 }
+
+.funny-section{
+padding:80px 20px;
+text-align:center;
+}
+
+.funny-section h2{
+color:#ff7ab8;
+margin-bottom:10px;
+}
+
+.funny-section p{
+color:#ccc;
+margin-bottom:40px;
+}
+
+.funny-gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+max-width:800px;
+margin:auto;
+}
+
+.funny-polaroid{
+background:white;
+padding:12px;
+border-radius:10px;
+color:black;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+transition:.3s;
+}
+
+.funny-polaroid:nth-child(1){
+transform:rotate(-4deg);
+}
+
+.funny-polaroid:nth-child(2){
+transform:rotate(3deg);
+}
+
+.funny-polaroid:nth-child(3){
+transform:rotate(2deg);
+}
+
+.funny-polaroid:nth-child(4){
+transform:rotate(-3deg);
+}
+
+.funny-polaroid:hover{
+transform:scale(1.05);
+}
+
+.funny-polaroid img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:5px;
+}
+
+.funny-polaroid span{
+display:block;
+margin-top:12px;
+font-family:Caveat;
+font-size:1.5rem;
+}
