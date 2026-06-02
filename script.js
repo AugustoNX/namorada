@@ -21,7 +21,7 @@ playing = !playing;
 
 });
 
-const startDate = new Date("2025-05-05");
+const startDate = new Date("2026-05-05");
 
 function updateCounter(){
 
