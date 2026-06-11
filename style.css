@@ -226,3 +226,30 @@ margin-top:12px;
 font-family:Caveat;
 font-size:1.5rem;
 }
+
+.love-counter{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+max-width:500px;
+margin:40px auto;
+}
+
+.counter-box{
+background:#181818;
+border:1px solid rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+}
+
+.counter-box span{
+display:block;
+font-size:2rem;
+font-weight:700;
+color:#1db954;
+}
+
+.counter-box small{
+color:#aaa;
+font-size:.9rem;
+}
