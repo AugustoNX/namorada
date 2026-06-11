@@ -21,25 +21,44 @@ playing = !playing;
 
 });
 
-const startDate = new Date("2026-05-05");
+
+const startDate = new Date("2026-05-05T20:00:00");
 
 function updateCounter(){
 
-const now = new Date();
+    const now = new Date();
 
-const diff = now - startDate;
+    const diff = now - startDate;
 
-const days =
-Math.floor(
-diff / (1000*60*60*24)
-);
+    const days = Math.floor(
+        diff / (1000 * 60 * 60 * 24)
+    );
 
-document.getElementById("daysCounter")
-.innerHTML = `${days} dias`;
+    const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
 
+    const minutes = Math.floor(
+        (diff % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+        (diff % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
 }
 
 updateCounter();
+
+setInterval(updateCounter,1000);
+
 
 const observer =
 new IntersectionObserver(entries=>{
