@@ -92,3 +92,34 @@ fill:"forwards"
 
 document.querySelectorAll(".memory")
 .forEach(item=>observer.observe(item));
+
+
+
+
+const closedLetter =
+document.getElementById("closedLetter");
+
+const letterModal =
+document.getElementById("letterModal");
+
+const closeLetter =
+document.getElementById("closeLetter");
+
+const openedLetter =
+document.getElementById("openedLetter");
+
+closedLetter.addEventListener("click", () => {
+
+    letterModal.style.display = "flex";
+
+});
+
+closeLetter.addEventListener("click", () => {
+
+    letterModal.style.display = "none";
+
+    openedLetter.classList.remove("hidden");
+
+    closedLetter.style.display = "none";
+
+});
