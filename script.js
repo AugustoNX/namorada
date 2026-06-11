@@ -93,9 +93,6 @@ fill:"forwards"
 document.querySelectorAll(".memory")
 .forEach(item=>observer.observe(item));
 
-
-
-
 const closedLetter =
 document.getElementById("closedLetter");
 
@@ -121,5 +118,44 @@ closeLetter.addEventListener("click", () => {
     openedLetter.classList.remove("hidden");
 
     closedLetter.style.display = "none";
+
+});
+
+const progressBar =
+document.getElementById("progressBar");
+
+const currentTimeElement =
+document.getElementById("currentTime");
+
+const durationElement =
+document.getElementById("duration");
+
+function formatTime(seconds){
+
+    const mins = Math.floor(seconds / 60);
+
+    const secs = Math.floor(seconds % 60);
+
+    return `${mins}:${secs.toString().padStart(2,"0")}`;
+
+}
+
+music.addEventListener("loadedmetadata", ()=>{
+
+    durationElement.textContent =
+    formatTime(music.duration);
+
+});
+
+music.addEventListener("timeupdate", ()=>{
+
+    const progress =
+    (music.currentTime / music.duration) * 100;
+
+    progressBar.style.width =
+    `${progress}%`;
+
+    currentTimeElement.textContent =
+    formatTime(music.currentTime);
 
 });
